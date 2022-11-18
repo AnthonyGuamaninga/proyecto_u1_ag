@@ -2,7 +2,7 @@ package com.example.demo.tradicional;
 
 import java.time.LocalDateTime;
 
-public class Main {
+public class Main { // cambio en el proyecto (proyecto clon)
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
