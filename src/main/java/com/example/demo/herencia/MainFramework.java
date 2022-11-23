@@ -7,11 +7,22 @@ public class MainFramework {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		PacienteH pacienteTE = new PacienteTerceraEdadH();
+		PacienteTerceraEdadH pacienteTE = new PacienteTerceraEdadH();
 		pacienteTE.setCedula("12334566");
-		
+		pacienteTE.setCodigoIESS("232334234");
 		pacienteTE.setNombre("Daniel");
 		pacienteTE.setTipo("TE");
+		
+		PacienteNinioH pacienteN = new PacienteNinioH();
+		pacienteN.setCedula("12334566");
+		pacienteN.setPesoNacimiento(8);
+		pacienteN.setNombre("Daniel");
+		pacienteN.setTipo("N");
+		
+		PacienteCancerH pacienteC = new PacienteCancerH();
+		pacienteC.setCedula("12334566");
+		pacienteC.setNombre("Daniel");
+		pacienteC.setTipo("C");
 		
 		MedicoH medico = new MedicoH();
 		medico.setNombre("Diana");
@@ -19,7 +30,7 @@ public class MainFramework {
 		
 		
 		CitaMedicaH cita = new CitaMedicaH();
-		cita.agendar("1233", LocalDateTime.of(2022,12,2,8,30 ), pacienteTE, null);
+		cita.agendar("1233", LocalDateTime.of(2022,12,2,8,30 ), pacienteTE, medico);
 		
 		
 	}
