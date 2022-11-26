@@ -16,8 +16,11 @@ import com.example.demo.spring.boot.PacienteTerceraEdadSB;
 @SpringBootApplication
 public class ProyectoU1AgApplication implements CommandLineRunner {
 
-	@Autowired
+	@Autowired // 
 	private PacienteTerceraEdadSB pacienteTE;
+	
+	@Autowired
+	private PacienteCancerSB cancerSB;
 	
 	@Autowired
 	private CitaMedicaSB citaMedicaSB;
@@ -41,7 +44,11 @@ public class ProyectoU1AgApplication implements CommandLineRunner {
 		
 		System.out.println(pacienteTE);
 		
-		citaMedicaSB.agendar("1233", LocalDateTime.of(2022,12,2,8,30 ), pacienteTE, medico);
+		this.cancerSB.setCedula("123123");
+		this.cancerSB.setNombre("Daniel");
+		this.cancerSB.setTipo("C");
+		
+		citaMedicaSB.agendar("1233", LocalDateTime.of(2022,12,2,8,30 ), cancerSB, medico);
 		
 		
 	}
