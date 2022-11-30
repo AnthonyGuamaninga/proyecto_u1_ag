@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.banco.modelo.CuentaBancaria;
+import com.example.demo.banco.service.ICuentaBancariaService;
 import com.example.demo.herencia.PacienteTerceraEdadH;
 import com.example.demo.spring.boot.CitaMedicaSB;
 import com.example.demo.spring.boot.MedicoSB;
@@ -16,17 +19,9 @@ import com.example.demo.spring.boot.PacienteTerceraEdadSB;
 @SpringBootApplication
 public class ProyectoU1AgApplication implements CommandLineRunner {
 
-	@Autowired // 
-	private PacienteTerceraEdadSB pacienteTE;
-	
 	@Autowired
-	private PacienteCancerSB cancerSB;
+	private ICuentaBancariaService bancariaService;
 	
-	@Autowired
-	private CitaMedicaSB citaMedicaSB;
-	
-	@Autowired
-	private MedicoSB medico;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1AgApplication.class, args);
@@ -34,23 +29,22 @@ public class ProyectoU1AgApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-		System.out.println("Spring Boot");
 		
-		this.pacienteTE.setCodigoIESS("sadesadas");
-		this.pacienteTE.setNombre("Anthony");
-		this.pacienteTE.setCedula("175642226");
-		this.pacienteTE.setTipo("TE");
+		CuentaBancaria cuenta1 = new CuentaBancaria();
+		cuenta1.setNumero("001");
+		cuenta1.setSaldo(new BigDecimal(100));
+		cuenta1.setTipo("A");
+		cuenta1.setTitular("Anthony Guamaninga");
 		
-		System.out.println(pacienteTE);
+		this.bancariaService.insertar(cuenta1);
 		
-		this.cancerSB.setCedula("123123");
-		this.cancerSB.setNombre("Daniel");
-		this.cancerSB.setTipo("C");
+		CuentaBancaria cuenta2 = new CuentaBancaria();
+		cuenta2.setNumero("002");
+		cuenta2.setSaldo(new BigDecimal(200));
+		cuenta2.setTipo("A");
+		cuenta2.setTitular("Karla Torres");
 		
-		citaMedicaSB.agendar("1233", LocalDateTime.of(2022,12,2,8,30 ), cancerSB, medico);
-		
-		
+		this.bancariaService.insertar(cuenta2);
 	}
 
 }

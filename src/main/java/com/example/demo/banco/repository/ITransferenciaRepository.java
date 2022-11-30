@@ -1,5 +1,7 @@
 package com.example.demo.banco.repository;
 
+import java.util.List;
+
 import com.example.demo.banco.modelo.Transferencia;
 
 public interface ITransferenciaRepository {
@@ -10,7 +12,8 @@ public interface ITransferenciaRepository {
 	public void actualizar(Transferencia tansferencia);
 	public void insertar(Transferencia tansferencia);
 	public void borrar(Integer id);
-		
+	
+	public List<Transferencia> buscarTodos();
 		
 
 }
