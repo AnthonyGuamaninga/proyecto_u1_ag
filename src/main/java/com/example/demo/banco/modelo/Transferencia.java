@@ -13,6 +13,11 @@ public class Transferencia {
 	
 	
 	
+	@Override
+	public String toString() {
+		return "Transferencia [cuentaOrigen=" + cuentaOrigen + ", cuentaDestino=" + cuentaDestino + ", monto=" + monto
+				+ ", fecha=" + fecha + ", numero=" + numero + "]";
+	}
 	// SET Y GET
 	public String getCuentaOrigen() {
 		return cuentaOrigen;
