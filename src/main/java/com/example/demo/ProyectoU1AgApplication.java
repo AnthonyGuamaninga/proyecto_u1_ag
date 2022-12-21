@@ -16,6 +16,7 @@ import com.example.demo.banco.service.ITransferenciaService;
 import com.example.demo.ejercicio1.modelo.Matricula;
 import com.example.demo.ejercicio1.modelo.Propietario;
 import com.example.demo.ejercicio1.modelo.Vehiculo;
+import com.example.demo.ejercicio1.service.IGestorMatriculaService;
 import com.example.demo.ejercicio1.service.IMatriculaNuevaService;
 import com.example.demo.ejercicio1.service.IMatriculaService;
 import com.example.demo.ejercicio1.service.IPropietarioService;
@@ -32,7 +33,8 @@ public class ProyectoU1AgApplication implements CommandLineRunner {
 	private IVehiculoService vehiculoService;
 	@Autowired
 	private IPropietarioService iPropietarioService;
-	
+	@Autowired
+	private IGestorMatriculaService gestorMatriculaService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1AgApplication.class, args);
@@ -42,17 +44,17 @@ public class ProyectoU1AgApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		
 		//OPCION 1:
-		Vehiculo v = new Vehiculo();
-		v.setMarca("Chevrolet");
-		v.setPlaca("PDZ-4544");
-		v.setPrecio(new BigDecimal(32000));
-		v.setTipo("Liviano");
-		vehiculoService.crear(v);
+		Vehiculo vehiculo = new Vehiculo();
+		vehiculo.setMarca("Chevrolet");
+		vehiculo.setPlaca("PDZ-4544");
+		vehiculo.setPrecio(new BigDecimal(32000));
+		vehiculo.setTipo("Pesado");
+		vehiculoService.crear(vehiculo);
 		
-		System.out.println(v);
-		v.setPrecio(new BigDecimal(100000));
-		v.setMarca("KIA");
-		vehiculoService.modificar(v);
+		System.out.println(vehiculo);
+		vehiculo.setPrecio(new BigDecimal(100000));
+		vehiculo.setMarca("KIA");
+		vehiculoService.modificar(vehiculo);
 		
 		//OPCION 2:
 		Propietario propietario = new Propietario();
@@ -63,12 +65,9 @@ public class ProyectoU1AgApplication implements CommandLineRunner {
 		
 		this.iPropietarioService.guardar(propietario);
 		
-		
-		
-		
 		//OPCION 3:
 		//this.iMatriculaService.matricular("2535445234","PDZ-4544");
-		
+		this.gestorMatriculaService.matricular(propietario.getCedula(), vehiculo.getPlaca());
 		
 	}
 
